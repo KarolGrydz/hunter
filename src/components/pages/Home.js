@@ -1,31 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useContext } from 'react';
+import TripsContext from '../../context/trips/tripsContext';
+
+import { Preloader } from '../layout/Preloader';
 
 export const Home = () => {
-  const [adventure, setAdventure] = useState([]);
+  const tripsContext = useContext(TripsContext);
+  const { getTrips, trips } = tripsContext;
 
   useEffect(() => {
-    const data = getData();
-    data.then((res) => {
-      console.log(res.data);
-      setAdventure(res.data);
-    });
+    getTrips();
   }, []);
-
-  const getData = () => {
-    const data = axios.get(
-      'http://localhost/wp-hunter/wp-json/wp/v2/wyprawy/5004'
-    );
-    return data;
-  };
 
   return (
     <>
-      {!adventure ? (
-        <div>Loading...</div>
+      {!trips.length ? (
+        <Preloader />
       ) : (
         <div
-          dangerouslySetInnerHTML={{ __html: adventure.content.rendered }}
+          dangerouslySetInnerHTML={{ __html: trips[0].content.rendered }}
         ></div>
       )}
     </>
