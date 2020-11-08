@@ -1,19 +1,30 @@
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { Navbar } from './components/layout/Navbar';
-import { Home } from './components/pages/Home';
 import { Footer } from './components/layout/Footer';
+import { Home } from './components/pages/Home';
+import { About } from './components/layout/About';
+import { Contact } from './components/pages/Contact';
+import { Blog } from './components/pages/Blog';
+import { Friend } from './components/pages/Friend';
 
 import { TripsState } from './context/trips/TripsState';
 
 function App() {
   return (
     <TripsState>
-      <Navbar />
-      <h1>Hunter app</h1>
-      <h3>nowa apka</h3>
-      <Home />
-      <Footer />
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/kim-jestesmy/' component={About} />
+          <Route exact path='/kontakt/' component={Contact} />
+          <Route exact path='/wyprawy/' component={Blog} />
+          <Route exact path='/przyjaciele/' component={Friend} />
+        </Switch>
+        <Footer />
+      </Router>
     </TripsState>
   );
 }

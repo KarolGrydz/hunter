@@ -1,63 +1,72 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { NavLink } from 'react-router-dom';
+import { makeStyles, styled } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-import Logo from '../../assets/img/logo.jpg';
+import HunterLogo from '../../assets/img/logo.jpg';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    background: '#515547',
-    fontWeight: 600,
+const Navigation = styled('nav')({
+  flexGrow: 1,
+  background: '#515547',
+  fontWeight: 600,
+});
+
+const MyLink = styled(NavLink)({
+  padding: '8px',
+  textAlign: 'center',
+  color: '#fff',
+  transitionDuration: '250ms',
+  transitionTimingFunction: 'ease-in-out',
+  '&:hover': {
+    color: '#a6b71b', // #8d9b1a
+    borderBottom: '1px solid #8d9b1a',
   },
-  link: {
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: '#fff',
-  },
-  link_list: {
-    paddingRight: '5vw',
-  },
-  logo: {
-    height: '128px',
-    padding: '5px',
-  },
-}));
+});
+
+const List = styled(Grid)({
+  paddingRight: '5vw',
+});
+
+const Logo = styled('img')({
+  height: '128px',
+  padding: '5px',
+});
 
 export const Navbar = () => {
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
+    <Navigation>
       <Grid container>
         <Grid xs={2}>
-          <img src={Logo} alt="Logo" className={classes.logo} />
+          <Logo src={HunterLogo} alt='Logo' />
         </Grid>
-        <Grid
-          xs={10}
-          container
-          justify="flex-end"
-          alignItems="center"
-          className={classes.link_list}
-        >
-          <Grid item className={classes.link}>
-            Hunter
+        <List xs={10} container justify='flex-end' alignItems='center'>
+          <Grid item>
+            <MyLink activeStyle={{ color: '#a6b71b' }} exact to='/'>
+              Hunter
+            </MyLink>
           </Grid>
-          <Grid item className={classes.link}>
-            Kim jesteśmy?
+          <Grid item>
+            <MyLink activeStyle={{ color: '#a6b71b' }} to='/kim-jestesmy/'>
+              Kim jesteśmy?
+            </MyLink>
           </Grid>
-          <Grid item className={classes.link}>
-            Wyprawy
+          <Grid item>
+            <MyLink activeStyle={{ color: '#a6b71b' }} to='/wyprawy/'>
+              Wyprawy
+            </MyLink>
           </Grid>
-          <Grid item className={classes.link}>
-            Przyjaciele
+          <Grid item>
+            <MyLink activeStyle={{ color: '#a6b71b' }} to='/przyjaciele/'>
+              Przyjaciele
+            </MyLink>
           </Grid>
-          <Grid item className={classes.link}>
-            Kontakt
+          <Grid item>
+            <MyLink activeStyle={{ color: '#a6b71b' }} to='/kontakt/'>
+              Kontakt
+            </MyLink>
           </Grid>
-        </Grid>
+        </List>
       </Grid>
-    </div>
+    </Navigation>
   );
 };

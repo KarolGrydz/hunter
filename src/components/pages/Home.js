@@ -14,6 +14,8 @@ export const Home = () => {
 
   return (
     <>
+      <h1>Hunter app</h1>
+      <h3>nowa apka</h3>
       {!trips.length ? (
         <Preloader />
       ) : (
