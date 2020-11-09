@@ -8,6 +8,7 @@ const TittleContainer = styled('div')({
   textAlign: 'center',
   lineHeight: '1',
   padding: '3vh 0vw',
+  width: '100%',
   // backgroundColor: '#a6b71b', //#94a31a
   '& h1': {
     fontSize: '6rem',

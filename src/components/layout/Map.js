@@ -1,6 +1,7 @@
 import React from 'react';
 import SampleMap from '../../assets/img/mapa.jpg';
 import { styled } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
 const MyMap = styled('img')({
   width: 'auto',
@@ -9,10 +10,14 @@ const MyMap = styled('img')({
   margin: 'auto',
 });
 
+const MyContainer = styled(Container)({
+  padding: '10vh 0',
+});
+
 export const Map = () => {
   return (
-    <>
-      <MyMap src={SampleMap} alt='Map' />
-    </>
+    <MyContainer>
+      <MyMap src={SampleMap} alt="Map" />
+    </MyContainer>
   );
 };
