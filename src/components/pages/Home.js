@@ -1,33 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useContext } from 'react';
+import TripsContext from '../../context/trips/tripsContext';
+
+import { Preloader } from '../layout/Preloader';
+import { Title } from '../layout/Title';
+import { Map } from '../layout/Map';
+import { Tile } from '../layout/Tile';
 
 export const Home = () => {
-  const [adventure, setAdventure] = useState([]);
+  const tripsContext = useContext(TripsContext);
+  const { getTrips, trips } = tripsContext;
 
   useEffect(() => {
-    const data = getData();
-    data.then((res) => {
-      console.log(res.data);
-      setAdventure(res.data);
-    });
+    getTrips();
   }, []);
-
-  const getData = () => {
-    const data = axios.get(
-      'http://localhost/wp-hunter/wp-json/wp/v2/wyprawy/5004'
-    );
-    return data;
-  };
 
   return (
     <>
-      {!adventure ? (
-        <div>Loading...</div>
-      ) : (
-        <div
-          dangerouslySetInnerHTML={{ __html: adventure.content.rendered }}
-        ></div>
-      )}
+      <Title />
+      <Map />
+      <Tile />
     </>
   );
 };
