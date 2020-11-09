@@ -5,6 +5,7 @@ import TripsContext from '../../context/trips/tripsContext';
 import { Preloader } from '../layout/Preloader';
 import { Title } from '../layout/Title';
 import { Map } from '../layout/Map';
+import { Tile } from '../layout/Tile';
 
 export const Home = () => {
   const tripsContext = useContext(TripsContext);
@@ -18,6 +19,7 @@ export const Home = () => {
     <>
       <Title />
       <Map />
+      <Tile />
     </>
   );
 };
