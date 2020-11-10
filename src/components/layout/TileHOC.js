@@ -7,12 +7,20 @@ import Container from '@material-ui/core/Container';
 const styles = {
   root: {
     display: 'flex',
-    backgroundColor: '#515547',
+    backgroundColor: '#f1f1f1',
+  },
+
+  text: {
     padding: '70px 50px 45px 50px',
     '& h1': {
       textAlign: 'center',
+      marginBottom: '25px',
+    },
+    '& p': {
+      padding: '0 50px',
     },
   },
+
   image: {
     backgroundColor: '#cecece',
     backgroundPosition: 'center center',
@@ -25,18 +33,21 @@ const styles = {
 //test dodanie obrazka jakiegoś
 
 const TileHOC = ({ classes, text, img, title }) => {
-  if (img)
-    return (
-      <Grid item xs={6}>
-        <img className={classes.image} src={img} alt='full img' />
-      </Grid>
-    );
+  console.log(img);
+
   return (
     <Grid item xs={6} className={classes.root}>
-      <Container>
-        <h1>{title}</h1>
-        <p>{text}</p>
-      </Container>
+      {img ? (
+        <div
+          className={classes.image}
+          style={{ backgroundImage: `url(${img})` }}
+        ></div>
+      ) : (
+        <Container className={classes.text}>
+          <h1>{title}</h1>
+          <p>{text}</p>
+        </Container>
+      )}
     </Grid>
   );
 };
