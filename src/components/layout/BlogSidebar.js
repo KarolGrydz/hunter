@@ -55,14 +55,13 @@ const PostContainer = styled('div')({
 });
 
 export const BlogSidebar = ({ posts }) => {
-  console.log(posts);
   return (
     <Grid item xs={3}>
       <Title>Kategorie</Title>
       <List>
         <ListItem>
           <Icons>
-            <FilterHdr style={{ color: 'rgb(166, 183, 27)' }} />
+            <FilterHdr />
           </Icons>
           <CategoryName href='#'>Wyprawy</CategoryName>
           <PostNumber>({posts.length})</PostNumber>

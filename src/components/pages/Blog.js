@@ -21,14 +21,12 @@ export const Blog = () => {
     // eslint-disable-next-line
   }, []);
 
-  console.log(trips);
-
   if (!trips.length) return <Preloader />;
 
   return (
     <BlogContainer>
       <Grid container>
-        <BlogContent />
+        <BlogContent posts={trips} />
         <BlogSidebar posts={trips} />
       </Grid>
     </BlogContainer>
