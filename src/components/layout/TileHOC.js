@@ -11,7 +11,7 @@ const styles = {
   },
 
   text: {
-    padding: '70px 50px 45px 50px',
+    padding: '80px 50px 65px 50px',
     '& h1': {
       textAlign: 'center',
       marginBottom: '25px',
@@ -33,8 +33,6 @@ const styles = {
 //test dodanie obrazka jakiegoś
 
 const TileHOC = ({ classes, text, img, title }) => {
-  console.log(img);
-
   return (
     <Grid item xs={6} className={classes.root}>
       {img ? (

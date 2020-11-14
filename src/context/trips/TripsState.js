@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
 import TripsContext from './tripsContext';
-import TripsReducer from './tripsReducer';
+import { tripsReducer } from './tripsReducer';
 import { GET_TRIPS } from '../types';
 
 export const TripsState = (props) => {
@@ -9,7 +9,7 @@ export const TripsState = (props) => {
     trips: [],
   };
 
-  const [state, dispatch] = useReducer(TripsReducer, initialState);
+  const [state, dispatch] = useReducer(tripsReducer, initialState);
 
   const getTrips = async () => {
     const res = await axios.get(
