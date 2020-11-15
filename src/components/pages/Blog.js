@@ -1,8 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { styled } from '@material-ui/core/styles';
 import TripsContext from '../../context/trips/tripsContext';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
+import { Container, Grid } from '@material-ui/core';
 
 import { Preloader } from '../layout/Preloader';
 import { BlogContent } from '../layout/BlogContent';

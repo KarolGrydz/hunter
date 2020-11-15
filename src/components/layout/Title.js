@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from '@material-ui/core/styles';
+import { Fade } from '@material-ui/core';
 
 import '../../assets/fonts/fonts.css';
 
@@ -18,13 +19,15 @@ const TittleContainer = styled('div')({
   },
 });
 
-export const Title = () => {
+export const Title = ({ title, subTtitle }) => {
   return (
     <>
-      <TittleContainer>
-        <h1>Hunter</h1>
-        <h2>grupa eksploracyjno-historyczna</h2>
-      </TittleContainer>
+      <Fade in={true} timeout={2000}>
+        <TittleContainer>
+          <h1>{title}</h1>
+          <h2>{subTtitle}</h2>
+        </TittleContainer>
+      </Fade>
     </>
   );
 };

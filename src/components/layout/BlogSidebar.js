@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { styled } from '@material-ui/core/styles';
+import TripsContext from '../../context/trips/tripsContext';
 import { FilterHdr, FolderSharp } from '@material-ui/icons';
-import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import { Grid, List, ListItem } from '@material-ui/core';
 
 const Title = styled('h2')({
   padding: '15px 0',
@@ -55,6 +54,9 @@ const PostContainer = styled('div')({
 });
 
 export const BlogSidebar = ({ posts }) => {
+  const tripsContext = useContext(TripsContext);
+  const { clearSingleTrip } = tripsContext;
+
   return (
     <Grid item xs={3}>
       <Title>Kategorie</Title>
@@ -63,22 +65,26 @@ export const BlogSidebar = ({ posts }) => {
           <Icons>
             <FilterHdr />
           </Icons>
-          <CategoryName href='#'>Wyprawy</CategoryName>
+          <CategoryName href="#">Wyprawy</CategoryName>
           <PostNumber>({posts.length})</PostNumber>
         </ListItem>
         <ListItem>
           <Icons>
             <FolderSharp />
           </Icons>
-          <CategoryName href='#'>Aktulności</CategoryName>
+          <CategoryName href="#">Aktulności</CategoryName>
           <PostNumber>(0)</PostNumber>
         </ListItem>
       </List>
       <Title>Ostatnie posty</Title>
-      {posts.slice(0, 2).map((post) => (
+      {posts.slice(0, 4).map((post) => (
         <PostContainer key={post.id}>
-          <Link to='#'>
-            <h6>{post.title.rendered}</h6>
+          <Link to={`/wyprawy/${post.id}`} onClick={() => clearSingleTrip()}>
+            <h6>
+              <div
+                dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+              ></div>
+            </h6>
           </Link>
           <span>{post.date.slice(0, 10)}</span>
         </PostContainer>

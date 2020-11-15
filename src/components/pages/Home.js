@@ -7,7 +7,7 @@ import { Tile } from '../layout/Tile';
 export const Home = () => {
   return (
     <>
-      <Title />
+      <Title title={'Hunter'} subTtitle={'grupa eksploracyjno-historyczna'} />
       <Map />
       <Tile />
     </>
