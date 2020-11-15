@@ -21,6 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://www.kg.glogow.pl/projects/websites/new-Hunter/",
   "eslintConfig": {
     "extends": [
       "react-app",

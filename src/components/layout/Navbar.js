@@ -33,38 +33,38 @@ export const Navbar = () => {
     <Navigation>
       <Grid container>
         <Grid item xs={2}>
-          <Logo src={HunterLogo} alt="Logo" />
+          <Logo src={HunterLogo} alt='Logo' />
         </Grid>
         <Grid
           item
           xs={10}
           container
-          justify="flex-end"
-          alignItems="center"
+          justify='flex-end'
+          alignItems='center'
           style={{ paddingRight: '5vw' }}
         >
           <Grid item>
-            <MyLink activeStyle={{ color: '#a6b71b' }} exact to="/">
+            <MyLink activeStyle={{ color: '#a6b71b' }} exact to='/'>
               Hunter
             </MyLink>
           </Grid>
           <Grid item>
-            <MyLink activeStyle={{ color: '#a6b71b' }} to="/kim-jestesmy/">
+            <MyLink activeStyle={{ color: '#a6b71b' }} to='/kim-jestesmy/'>
               Kim jesteśmy?
             </MyLink>
           </Grid>
           <Grid item>
-            <MyLink activeStyle={{ color: '#a6b71b' }} to="/wyprawy/">
+            <MyLink activeStyle={{ color: '#a6b71b' }} to='/wyprawy/'>
               Wyprawy
             </MyLink>
           </Grid>
           <Grid item>
-            <MyLink activeStyle={{ color: '#a6b71b' }} to="/przyjaciele/">
+            <MyLink activeStyle={{ color: '#a6b71b' }} to='/przyjaciele/'>
               Przyjaciele
             </MyLink>
           </Grid>
           <Grid item>
-            <MyLink activeStyle={{ color: '#a6b71b' }} to="/kontakt/">
+            <MyLink activeStyle={{ color: '#a6b71b' }} to='/kontakt/'>
               Kontakt
             </MyLink>
           </Grid>

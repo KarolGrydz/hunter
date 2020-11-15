@@ -10,7 +10,7 @@ const Container = styled('div')({
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
   color: 'white',
-  padding: '10vh 15vw',
+  padding: '30vh 15vw',
   fontSize: '1.2em',
   position: 'relative',
   zIndex: '-1',

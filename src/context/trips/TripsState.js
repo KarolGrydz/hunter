@@ -14,7 +14,7 @@ export const TripsState = (props) => {
 
   const getTrips = async () => {
     const res = await axios.get(
-      'http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy'
+      'https://hunter.polkowice.pl/wp-json/wp/v2/wyprawy'
     );
 
     dispatch({
@@ -25,7 +25,7 @@ export const TripsState = (props) => {
 
   const getSingleTrip = async (id) => {
     const res = await axios.get(
-      `http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`
+      `https://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`
     );
 
     dispatch({

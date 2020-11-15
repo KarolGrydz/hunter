@@ -1,4 +1,3 @@
-import { Container } from '@material-ui/core';
 import React from 'react';
 import { styled } from '@material-ui/core/styles';
 import { Title } from '../layout/Title';
@@ -11,7 +10,7 @@ const ContactContainer = styled('div')({
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
   color: 'white',
-  padding: '10vh 15vw',
+  padding: '20vh 15vw',
   fontSize: '1.2em',
   position: 'relative',
   zIndex: '-1',

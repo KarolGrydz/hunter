@@ -15,15 +15,15 @@ import { TripsState } from './context/trips/TripsState';
 function App() {
   return (
     <TripsState>
-      <Router>
+      <Router basename='projects/websites/new-Hunter'>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/kim-jestesmy/" component={About} />
-          <Route exact path="/kontakt/" component={Contact} />
-          <Route exact path="/wyprawy/" component={Blog} />
-          <Route exact path="/przyjaciele/" component={Friend} />
-          <Route exact path="/wyprawy/:id" component={BlogSinglePost} />
+          <Route exact path='/' component={Home} />
+          <Route exact path='/kim-jestesmy/' component={About} />
+          <Route exact path='/kontakt/' component={Contact} />
+          <Route exact path='/wyprawy/' component={Blog} />
+          <Route exact path='/przyjaciele/' component={Friend} />
+          <Route exact path='/wyprawy/:id' component={BlogSinglePost} />
         </Switch>
         <Footer />
       </Router>
