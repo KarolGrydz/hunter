@@ -1,4 +1,9 @@
-import { GET_TRIPS, GET_SINGLE_TRIP, CLEAR_SINGLE_TRIP } from '../types';
+import {
+  GET_TRIPS,
+  GET_SINGLE_TRIP,
+  CLEAR_SINGLE_TRIP,
+  GET_MORE_TRIPS,
+} from '../types';
 
 export const tripsReducer = (state, action) => {
   switch (action.type) {
@@ -18,6 +23,12 @@ export const tripsReducer = (state, action) => {
       return {
         ...state,
         singleTrip: [],
+      };
+
+    case GET_MORE_TRIPS:
+      return {
+        ...state,
+        moreTrips: action.payload,
       };
 
     default:

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { styled } from '@material-ui/core/styles';
 import { Title } from '../layout/Title';
+import TripsContext from '../../context/trips/tripsContext';
 
 import Background from '../../assets/img/friends.jpg';
 
@@ -28,10 +29,20 @@ const Overlay = styled('div')({
 });
 
 export const Friend = () => {
+  const tripsContext = useContext(TripsContext);
+  const { getMoreTrips, moreTrips } = tripsContext;
+
+  console.log(moreTrips);
+
   return (
-    <Container>
-      <Overlay />
-      <Title title={'Przyjaciele'} />
-    </Container>
+    <>
+      <Container>
+        <Overlay />
+        <Title title={'Przyjaciele'} />
+      </Container>
+      <div>
+        <button onClick={() => getMoreTrips()}>Get more posts</button>
+      </div>
+    </>
   );
 };
