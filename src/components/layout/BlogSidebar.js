@@ -55,7 +55,7 @@ const PostContainer = styled('div')({
 
 export const BlogSidebar = ({ posts }) => {
   const tripsContext = useContext(TripsContext);
-  const { clearSingleTrip } = tripsContext;
+  const { clearSingleTrip, numberOfAllPosts } = tripsContext;
 
   return (
     <Grid item xs={3}>
@@ -65,14 +65,14 @@ export const BlogSidebar = ({ posts }) => {
           <Icons>
             <FilterHdr />
           </Icons>
-          <CategoryName href="#">Wyprawy</CategoryName>
-          <PostNumber>({posts.length})</PostNumber>
+          <CategoryName href='#'>Wyprawy</CategoryName>
+          <PostNumber>({numberOfAllPosts})</PostNumber>
         </ListItem>
         <ListItem>
           <Icons>
             <FolderSharp />
           </Icons>
-          <CategoryName href="#">Aktulności</CategoryName>
+          <CategoryName href='#'>Aktulności</CategoryName>
           <PostNumber>(0)</PostNumber>
         </ListItem>
       </List>

@@ -6,6 +6,7 @@ import { Container, Grid } from '@material-ui/core';
 import { Preloader } from '../layout/Preloader';
 import { BlogContent } from '../layout/BlogContent';
 import { BlogSidebar } from '../layout/BlogSidebar';
+import { BlogPagination } from '../layout/BlogPagination';
 
 const BlogContainer = styled(Container)({
   padding: '10vh 0',
@@ -13,10 +14,10 @@ const BlogContainer = styled(Container)({
 
 export const Blog = () => {
   const tripsContext = useContext(TripsContext);
-  const { getTrips, trips } = tripsContext;
+  const { getTrips, trips, numberOfAllPosts } = tripsContext;
 
   useEffect(() => {
-    getTrips();
+    getTrips(numberOfAllPosts);
     // eslint-disable-next-line
   }, []);
 
@@ -27,6 +28,7 @@ export const Blog = () => {
       <Grid container>
         <BlogContent posts={trips} />
         <BlogSidebar posts={trips} />
+        <BlogPagination />
       </Grid>
     </BlogContainer>
   );

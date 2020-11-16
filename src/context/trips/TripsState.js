@@ -6,27 +6,36 @@ import {
   GET_TRIPS,
   GET_SINGLE_TRIP,
   CLEAR_SINGLE_TRIP,
-  GET_MORE_TRIPS,
+  GET_ALL_PAGES_NUMBER,
+  GET_ALL_POST_NUBER,
+  CLEAR_ALL_TRIPS,
 } from '../types';
 
 export const TripsState = (props) => {
   const initialState = {
     trips: [],
     singleTrip: [],
-    moreTrips: [],
+    numberOfAllPosts: 0,
+    numberOfAllPages: 0,
   };
 
   const [state, dispatch] = useReducer(tripsReducer, initialState);
 
-  const getTrips = async () => {
+  const getTrips = async (gotNumber, pageNr = 1) => {
     const res = await axios.get(
-      'https://hunter.polkowice.pl/wp-json/wp/v2/wyprawy'
+      'https://hunter.polkowice.pl/wp-json/wp/v2/wyprawy',
+      { params: { page: pageNr } }
     );
 
     dispatch({
       type: GET_TRIPS,
       payload: res.data,
     });
+
+    if (!gotNumber) {
+      addNumberOfAllPosts(res.headers['x-wp-total']);
+      addNumberOfAllPages(res.headers['x-wp-totalpages']);
+    }
   };
 
   const getSingleTrip = async (id) => {
@@ -40,27 +49,15 @@ export const TripsState = (props) => {
     });
   };
 
-  const getMoreTrips = async () => {
-    const res = await axios.get(
-      'https://hunter.polkowice.pl/wp-json/wp/v2/wyprawy',
-      {
-        params: {
-          per_page: 20,
-        },
-      }
-    );
-
-
-    console.log(res.headers.['x-wp-total']);
-    console.log(res.headers.['x-wp-totalpages']);
-    console.log(res.headers);
-    dispatch({
-      type: GET_MORE_TRIPS,
-      payload: res.data,
-    });
-  };
-
   const clearSingleTrip = () => dispatch({ type: CLEAR_SINGLE_TRIP });
+
+  const clearTrips = () => dispatch({ type: CLEAR_ALL_TRIPS });
+
+  const addNumberOfAllPosts = (res) =>
+    dispatch({ type: GET_ALL_POST_NUBER, payload: res });
+
+  const addNumberOfAllPages = (res) =>
+    dispatch({ type: GET_ALL_PAGES_NUMBER, payload: res });
 
   return (
     <TripsContext.Provider
@@ -68,10 +65,12 @@ export const TripsState = (props) => {
         trips: state.trips,
         singleTrip: state.singleTrip,
         moreTrips: state.moreTrips,
+        numberOfAllPosts: state.numberOfAllPosts,
+        numberOfAllPages: state.numberOfAllPages,
         getTrips,
         getSingleTrip,
+        clearTrips,
         clearSingleTrip,
-        getMoreTrips,
       }}
     >
       {props.children}
