@@ -11,15 +11,27 @@ const Container = styled('div')({
 
 export const BlogPagination = () => {
   const tripsContext = useContext(TripsContext);
-  const { numberOfAllPages, getTrips, clearTrips } = tripsContext;
+  const {
+    numberOfAllPages,
+    getTrips,
+    clearTrips,
+    pageNr,
+    sidebarTrips,
+  } = tripsContext;
+
+  console.log(sidebarTrips.length);
+
   return (
     <Container>
       <Pagination
         count={Number(numberOfAllPages)}
-        variant='outlined'
-        shape='rounded'
-        onChange={(event, page) => getTrips(true, page)}
+        variant="outlined"
+        shape="rounded"
+        onChange={(event, page) =>
+          getTrips(numberOfAllPages, page, sidebarTrips)
+        }
         onClick={() => clearTrips()}
+        page={pageNr}
       />
     </Container>
   );

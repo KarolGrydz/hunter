@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import propTypes from 'prop-types';
 import { styled } from '@material-ui/core/styles';
 import TripsContext from '../../context/trips/tripsContext';
 import { FilterHdr, FolderSharp } from '@material-ui/icons';
@@ -55,7 +54,7 @@ const PostContainer = styled('div')({
 
 export const BlogSidebar = ({ posts }) => {
   const tripsContext = useContext(TripsContext);
-  const { clearSingleTrip, numberOfAllPosts } = tripsContext;
+  const { clearSingleTrip, numberOfAllPosts, sidebarTrips } = tripsContext;
 
   return (
     <Grid item xs={3}>
@@ -65,19 +64,19 @@ export const BlogSidebar = ({ posts }) => {
           <Icons>
             <FilterHdr />
           </Icons>
-          <CategoryName href='#'>Wyprawy</CategoryName>
+          <CategoryName href="#">Wyprawy</CategoryName>
           <PostNumber>({numberOfAllPosts})</PostNumber>
         </ListItem>
         <ListItem>
           <Icons>
             <FolderSharp />
           </Icons>
-          <CategoryName href='#'>Aktulności</CategoryName>
+          <CategoryName href="#">Aktulności</CategoryName>
           <PostNumber>(0)</PostNumber>
         </ListItem>
       </List>
       <Title>Ostatnie posty</Title>
-      {posts.slice(0, 4).map((post) => (
+      {sidebarTrips.slice(0, 4).map((post) => (
         <PostContainer key={post.id}>
           <Link to={`/wyprawy/${post.id}`} onClick={() => clearSingleTrip()}>
             <h6>
@@ -91,8 +90,4 @@ export const BlogSidebar = ({ posts }) => {
       ))}
     </Grid>
   );
-};
-
-BlogSidebar.propTypes = {
-  posts: propTypes.array.isRequired,
 };

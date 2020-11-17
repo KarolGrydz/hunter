@@ -14,10 +14,16 @@ const BlogContainer = styled(Container)({
 
 export const Blog = () => {
   const tripsContext = useContext(TripsContext);
-  const { getTrips, trips, numberOfAllPosts } = tripsContext;
+  const {
+    getTrips,
+    trips,
+    numberOfAllPosts,
+    sidebarTrips,
+    pageNr,
+  } = tripsContext;
 
   useEffect(() => {
-    getTrips(numberOfAllPosts);
+    getTrips(numberOfAllPosts, pageNr, sidebarTrips);
     // eslint-disable-next-line
   }, []);
 
@@ -27,7 +33,7 @@ export const Blog = () => {
     <BlogContainer>
       <Grid container>
         <BlogContent posts={trips} />
-        <BlogSidebar posts={trips} />
+        <BlogSidebar />
         <BlogPagination />
       </Grid>
     </BlogContainer>

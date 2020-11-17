@@ -5,6 +5,8 @@ import {
   CLEAR_ALL_TRIPS,
   GET_ALL_PAGES_NUMBER,
   GET_ALL_POST_NUBER,
+  UPDATE_PAGE,
+  GET_SIDEBAR_POSTS,
 } from '../types';
 
 export const tripsReducer = (state, action) => {
@@ -31,6 +33,18 @@ export const tripsReducer = (state, action) => {
       return {
         ...state,
         numberOfAllPosts: action.payload,
+      };
+
+    case GET_SIDEBAR_POSTS:
+      return {
+        ...state,
+        sidebarTrips: action.payload.slice(0, 4),
+      };
+
+    case UPDATE_PAGE:
+      return {
+        ...state,
+        pageNr: action.payload,
       };
 
     case CLEAR_ALL_TRIPS:

@@ -69,8 +69,6 @@ export const BlogSinglePost = ({ match }) => {
     // eslint-disable-next-line
   }, [match.params.id]);
 
-  console.log(singleTrip);
-
   if (!singleTrip.length && !trips.length) return <Preloader />;
 
   return (
