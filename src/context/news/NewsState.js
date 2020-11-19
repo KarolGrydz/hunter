@@ -1,24 +1,24 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
-import TripsContext from './tripsContext';
-import { tripsReducer } from './tripsReducer';
+import NewsContext from './newsContext';
+import { newsReducer } from './newsReducer';
 import {
   GET_TRIPS,
   GET_SINGLE_TRIP,
   CLEAR_SINGLE_TRIP,
-  GET_ALL_POST_PAGES,
-  GET_ALL_POST_NUMBER,
+  GET_ALL_PAGES_NUMBER,
+  GET_ALL_POST_NUBER,
   CLEAR_ALL_TRIPS,
-  UPDATE_PAGE_NR_POSTS,
+  UPDATE_PAGE,
   GET_SIDEBAR_POSTS,
 } from '../types';
 
-export const TripsState = (props) => {
+export const NewsState = (props) => {
   const initialState = {
-    trips: [],
-    singleTrip: [],
+    news: [],
+    singleNews: [],
     pageNr: 1,
-    sidebarTrips: [],
+    sidebarNews: [],
     numberOfAllPosts: 0,
     numberOfAllPages: 0,
   };
@@ -59,17 +59,17 @@ export const TripsState = (props) => {
   };
 
   const updatePaginationPage = (res) =>
-    dispatch({ type: UPDATE_PAGE_NR_POSTS, payload: res });
+    dispatch({ type: UPDATE_PAGE, payload: res });
 
   const clearSingleTrip = () => dispatch({ type: CLEAR_SINGLE_TRIP });
 
   const clearTrips = () => dispatch({ type: CLEAR_ALL_TRIPS });
 
   const addNumberOfAllPosts = (res) =>
-    dispatch({ type: GET_ALL_POST_NUMBER, payload: res });
+    dispatch({ type: GET_ALL_POST_NUBER, payload: res });
 
   const addNumberOfAllPages = (res) =>
-    dispatch({ type: GET_ALL_POST_PAGES, payload: res });
+    dispatch({ type: GET_ALL_PAGES_NUMBER, payload: res });
 
   const getSidebarTrips = (res) =>
     dispatch({ type: GET_SIDEBAR_POSTS, payload: res });

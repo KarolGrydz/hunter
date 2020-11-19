@@ -3,9 +3,9 @@ import {
   GET_SINGLE_TRIP,
   CLEAR_SINGLE_TRIP,
   CLEAR_ALL_TRIPS,
-  GET_ALL_PAGES_NUMBER,
-  GET_ALL_POST_NUBER,
-  UPDATE_PAGE,
+  GET_ALL_POST_PAGES,
+  GET_ALL_POST_NUMBER,
+  UPDATE_PAGE_NR_POSTS,
   GET_SIDEBAR_POSTS,
 } from '../types';
 
@@ -23,13 +23,13 @@ export const tripsReducer = (state, action) => {
         singleTrip: action.payload,
       };
 
-    case GET_ALL_PAGES_NUMBER:
+    case GET_ALL_POST_PAGES:
       return {
         ...state,
         numberOfAllPages: action.payload,
       };
 
-    case GET_ALL_POST_NUBER:
+    case GET_ALL_POST_NUMBER:
       return {
         ...state,
         numberOfAllPosts: action.payload,
@@ -41,7 +41,7 @@ export const tripsReducer = (state, action) => {
         sidebarTrips: action.payload.slice(0, 4),
       };
 
-    case UPDATE_PAGE:
+    case UPDATE_PAGE_NR_POSTS:
       return {
         ...state,
         pageNr: action.payload,
