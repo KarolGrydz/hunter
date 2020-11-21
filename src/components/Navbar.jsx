@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Avatar from '@material-ui/core/Avatar';
+import menu from '../constants/menu';
 
 import HunterLogo from '../assets/img/logo.jpg';
 
@@ -44,36 +45,15 @@ const Navbar = () => {
         <Toolbar className={classes.toolbar}>
           <Avatar alt="Logo" src={HunterLogo} className={classes.large} />
           <nav className={classes.appNav}>
-            <Link
-              variant="button"
-              to="/"
-            >
-              Hunter
-            </Link>
-            <Link
-              variant="button"
-              to="/kim-jestesmy/"
-            >
-              Kim jesteśmy?
-            </Link>
-            <Link
-              variant="button"
-              to="/wyprawy/"
-            >
-              Wyprawy
-            </Link>
-            <Link
-              variant="button"
-              to="/przyjaciele/"
-            >
-              Przyjaciele
-            </Link>
-            <Link
-              variant="button"
-              to="/kontakt/"
-            >
-              Kontakt
-            </Link>
+            {menu.map((param) => (
+              <Link
+                key={param.id}
+                variant="button"
+                to={param.link}
+              >
+                {param.label}
+              </Link>
+            ))}
           </nav>
         </Toolbar>
       </AppBar>
