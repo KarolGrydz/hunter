@@ -45,13 +45,9 @@ const Navbar = () => {
         <Toolbar className={classes.toolbar}>
           <Avatar alt="Logo" src={HunterLogo} className={classes.large} />
           <nav className={classes.appNav}>
-            {menu.map((param) => (
-              <Link
-                key={param.id}
-                variant="button"
-                to={param.link}
-              >
-                {param.label}
+            {menu.map(({ id, link, label }) => (
+              <Link key={id} variant="button" to={link}>
+                {label}
               </Link>
             ))}
           </nav>
