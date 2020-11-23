@@ -40,6 +40,10 @@ theme.overrides = {
         padding: 0,
         listStyle: 'none',
       },
+      footer: {
+        display: 'flex',
+        flexDirection: 'column',
+      },
     },
   },
 };

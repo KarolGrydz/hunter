@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Home from './scenes/Home';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route exact path='/przyjaciele/' component={Friends} />
         <Route exact path='/wyprawy/:id' component={SingleBlogPost} /> */}
       </Switch>
+      <Footer />
     </Router>
   );
 }
