@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
   div: {
     backgroundImage: `url(${MoroImage})`,
     position: 'absolute',
+
     bottom: 0,
   },
   img: {
