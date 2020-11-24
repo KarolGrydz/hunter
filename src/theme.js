@@ -25,6 +25,8 @@ theme.overrides = {
       },
       body: {
         lineHeight: '1.6',
+        backgroundColor: `${theme.palette.primary.dark}`,
+        color: '#fff',
       },
       a: {
         textDecoration: 'none',

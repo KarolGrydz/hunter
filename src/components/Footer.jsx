@@ -10,8 +10,6 @@ import MoroImage from '../assets/img/moro.jpg';
 const useStyles = makeStyles((theme) => ({
   div: {
     backgroundImage: `url(${MoroImage})`,
-    position: 'absolute',
-    bottom: 0,
   },
   img: {
     width: theme.spacing(10),
@@ -32,7 +30,7 @@ const Footer = () => {
   return (
     <footer>
       <Grid container justify="space-evenly" className={classes.div}>
-        <Box container alignItems="center" display="flex">
+        <Box alignItems="center" display="flex">
           <a href="https://www.facebook.com/grupahunter">
             <Facebook />
           </a>
