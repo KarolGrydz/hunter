@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
 
     bottom: 0,
+
   },
   img: {
     width: theme.spacing(10),
