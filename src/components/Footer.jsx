@@ -1,28 +1,43 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import { Facebook, YouTube } from '@material-ui/icons';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
 
 import CompExpert from '../assets/img/CompExpert.png';
 import MoroImage from '../assets/img/moro.jpg';
 
+// eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles((theme) => ({
-  div: {
+  root: {
     backgroundImage: `url(${MoroImage})`,
+    width: '100%',
     position: 'absolute',
     bottom: 0,
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
   img: {
-    width: theme.spacing(10),
+    width: 60,
   },
-  a: {
+  compExpert: {
+    marginLeft: 'auto',
+    marginRight: theme.spacing(2),
+    width: 100,
+    opacity: '.85',
+    padding: 5,
+    backgroundColor: theme.palette.primary.contrastText,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    '& p': {
-      margin: theme.spacing(0.5),
+    borderRadius: 3,
+    '&:hover': {
+      textDecoration: 'none',
     },
+  },
+  caption: {
+    fontSize: 10,
+    marginBottom: 5,
   },
 }));
 
@@ -30,20 +45,14 @@ const Footer = () => {
   const classes = useStyles();
 
   return (
-    <footer>
-      <Grid container justify="space-evenly" className={classes.div}>
-        <Box container alignItems="center" display="flex">
-          <a href="https://www.facebook.com/grupahunter">
-            <Facebook />
-          </a>
-          <a href="https://www.compexpert.pl/" className={classes.a}>
-            <p>Hosting zapewnia</p>
+    <footer className={classes.root}>
+      <Grid container justify="flex-end">
+        <Grid item xs={2}>
+          <Link href="https://www.compexpert.pl/" target="blank" className={classes.compExpert}>
+            <Typography variant="caption" className={classes.caption}>Hosting zapewnia</Typography>
             <img src={CompExpert} alt="CompExpert" className={classes.img} />
-          </a>
-          <a href="https://www.youtube.com/user/grupahunter">
-            <YouTube />
-          </a>
-        </Box>
+          </Link>
+        </Grid>
       </Grid>
     </footer>
   );

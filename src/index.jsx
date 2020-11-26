@@ -8,10 +8,9 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
+    <CssBaseline />
     <ThemeProvider theme={createMuiTheme(theme)}>
-      <CssBaseline>
-        <App />
-      </CssBaseline>
+      <App />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),
