@@ -1,5 +1,10 @@
 import React from 'react';
+import Map from '../components/Map';
 
-const Home = () => <>Home</>;
+const Home = () => (
+  <>
+    <Map />
+  </>
+);
 
 export default Home;
