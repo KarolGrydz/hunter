@@ -48,7 +48,7 @@ const Footer = () => {
     <footer className={classes.root}>
       <Grid container justify="flex-end">
         <Grid item xs={2}>
-          <Link href="https://www.compexpert.pl/" target="blank" className={classes.compExpert}>
+          <Link to="https://www.compexpert.pl/" target="blank" className={classes.compExpert}>
             <Typography variant="caption" className={classes.caption}>Hosting zapewnia</Typography>
             <img src={CompExpert} alt="CompExpert" className={classes.img} />
           </Link>

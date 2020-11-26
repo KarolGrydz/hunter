@@ -84,10 +84,10 @@ const Navbar = () => {
             </Link>
           ))}
           <Divider orientation="vertical" flexItem className={classes.divider} />
-          <Link href="https://www.youtube.com/user/grupahunter" target="blank" className={classes.ytIcon}>
+          <Link to="https://www.youtube.com/user/grupahunter" target="blank" className={classes.ytIcon}>
             <YouTube />
           </Link>
-          <Link href="https://www.facebook.com/grupahunter" target="blank" className={classes.fbIcon}>
+          <Link to="https://www.facebook.com/grupahunter" target="blank" className={classes.fbIcon}>
             <Facebook />
           </Link>
         </nav>
