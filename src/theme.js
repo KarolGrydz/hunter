@@ -16,32 +16,6 @@ const theme = {
 };
 
 theme.overrides = {
-  MuiCssBaseline: {
-    '@global': {
-      html: {
-        margin: '0',
-        padding: '0',
-        boxSizing: 'border-box',
-      },
-      body: {
-        lineHeight: '1.6',
-      },
-      a: {
-        textDecoration: 'none',
-        color: `${theme.palette.primary.contrastText}`,
-        transitionDuration: '250ms',
-        transitionTimingFunction: 'ease-in-out',
-        '&:hover': {
-          color: `${theme.palette.secondary.main}`,
-        },
-      },
-      ul: {
-        margin: 0,
-        padding: 0,
-        listStyle: 'none',
-      },
-    },
-  },
 };
 
 export default theme;
