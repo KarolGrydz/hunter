@@ -9,9 +9,9 @@ import {
 import myIcon from '../constants/icon';
 import staticPositions from '../constants/staticPositions';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   map: {
-    height: `calc(100vh - ${theme.spacing(17)}px)`,
+    height: '300px',
   },
 }));
 
