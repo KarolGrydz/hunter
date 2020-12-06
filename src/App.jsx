@@ -5,6 +5,8 @@ import Home from './scenes/Home';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
+import 'leaflet/dist/leaflet.css';
+
 function App() {
   return (
     <Router>
