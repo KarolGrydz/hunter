@@ -1,16 +1,13 @@
 import { of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { map, catchError } from 'rxjs/operators';
+import visited from '../constants/apiUrls';
 
-const url = 'https://hunter.polkowice.pl/wp-json/wp/v2/custom/visited';
-
-export const observable$ = ajax.getJSON(url)
+export const observable$ = ajax.getJSON(visited)
   .pipe(
     map((response) => response),
     catchError((error) => of(error)),
   );
-
-//  helper filter
 
 export const filterLocation = (res) => {
   const result = res.map(({ location, id }) => {

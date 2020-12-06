@@ -31,11 +31,10 @@ const Map = () => {
       className={classes.map}
     >
       <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {elements.length && elements.map(({ location, id }) => (
-        <>
+      {elements.length ? elements.map(({ location, id }) => (
+        <React.Fragment key={id}>
           {location.length && (
           <Marker position={location.split(',')} icon={myIcon} key={id}>
             <Popup>
@@ -45,8 +44,8 @@ const Map = () => {
             </Popup>
           </Marker>
           )}
-        </>
-      ))}
+        </React.Fragment>
+      )) : null}
     </MapContainer>
   );
 };
