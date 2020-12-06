@@ -7,13 +7,9 @@ import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-// import Modal from '@material-ui/core/Modal';
-// import Backdrop from '@material-ui/core/Backdrop';
-// import Fade from '@material-ui/core/Fade';
 import { Facebook, YouTube } from '@material-ui/icons';
 import { blue, red } from '@material-ui/core/colors';
 import Collapse from '@material-ui/core/Collapse';
-// import NavbarModal from './NavbarModal';
 
 import menu from '../constants/menu';
 import HunterLogo from '../assets/img/logo.jpg';
