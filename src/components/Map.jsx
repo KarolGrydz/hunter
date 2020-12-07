@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   MapContainer,
@@ -27,8 +28,11 @@ const Map = () => {
   return (
     <MapContainer
       center={[51.11535749698708, 17.034426774577256]}
-      zoom={7}
       className={classes.map}
+      bounds={[
+        [53.69103243124698, 14.846997344531987],
+        [49.80811058490771, 23.563262000113138],
+      ]}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -38,9 +42,7 @@ const Map = () => {
           {location.length && (
           <Marker position={location.split(',')} icon={myIcon} key={id}>
             <Popup>
-              A pretty CSS3 popup.
-              <br />
-              Easily customizable.
+              <Link key={id} to={`/wyprawy/${id}`}>Tekst wyprawy</Link>
             </Popup>
           </Marker>
           )}
