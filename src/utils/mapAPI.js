@@ -10,11 +10,11 @@ export const observable$ = ajax.getJSON(visited)
   );
 
 export const filterLocation = (res) => {
-  console.log(res);
-  const result = res.map(({ location, id }) => {
+  const result = res.map(({ location, id, title }) => {
     const start = location.search(/\bPolska/);
     return {
       id,
+      title,
       location: start !== -1 ? location.slice(start + 7, location.length) : [],
     };
   });

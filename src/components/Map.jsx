@@ -10,9 +10,17 @@ import {
 import myIcon from '../constants/icon';
 import { observable$, filterLocation } from '../utils/mapAPI';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   map: {
     height: '300px',
+  },
+  menuItem: {
+    color: `${theme.palette.secondary.contrastText}!important`,
+    textDecoration: 'none',
+    transition: 'color 100ms ease-in-out',
+    '&:hover': {
+      color: `${theme.palette.secondary.main}!important`,
+    },
   },
 }));
 
@@ -37,15 +45,13 @@ const Map = () => {
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {elements.length ? elements.map(({ location, id }) => (
+      {elements.length ? elements.map(({ location, id, title }) => (
         <React.Fragment key={id}>
-          {location.length && (
           <Marker position={location.split(',')} icon={myIcon} key={id}>
             <Popup>
-              <Link key={id} to={`/wyprawy/${id}`}>Tekst wyprawy</Link>
+              <Link key={id} target="blank" className={classes.menuItem} to={`/wyprawy/${id}`}>{title}</Link>
             </Popup>
           </Marker>
-          )}
         </React.Fragment>
       )) : null}
     </MapContainer>
