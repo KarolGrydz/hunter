@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundImage: `url(${MoroImage})`,
     width: '100%',
-    position: 'absolute',
     bottom: 0,
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
