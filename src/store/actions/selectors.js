@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import returnTrip from '../mappers/tripMapper';
+import returnTrip from '../../mappers/tripMapper';
 
 const getBlog = ({ blog }) => blog;
 
