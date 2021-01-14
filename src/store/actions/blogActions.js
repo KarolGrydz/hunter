@@ -1,3 +1,7 @@
+import { of } from 'rxjs';
+import { ajax } from 'rxjs/ajax';
+import { map, catchError } from 'rxjs/operators';
+
 import {
   GET_TRIPS,
   GET_SINGLE_TRIP,
@@ -10,13 +14,22 @@ import {
   SET_TRIPS_NUMBER,
   SET_PAGES,
   SET_SIDEBAR_TRIPS,
+  SET_VIEW,
 } from './types';
 
-import { of } from 'rxjs';
-import { ajax } from 'rxjs/ajax';
-import { map, catchError } from 'rxjs/operators';
+export const setCurrentPage = (event) => ({ type: SET_CURRENT_PAGE, payload: event });
 
-export const getTrips = (pageNr = 1, query = '') => async (dispatch) => {
+export const searchTrip = (event) => ({ type: SEARCH_TRIP, payload: event });
+
+export const setLoading = () => ({ type: SET_LOADING });
+
+export const clearCurrentTrip = () => ({ type: CLEAR_SINGLE_TRIP });
+
+export const clearTrips = () => ({ type: CLEAR_TRIPS });
+
+export const setView = (event) => ({ type: SET_VIEW, payload: event });
+
+export const getPosts = (pageNr = 1, query = '') => async (dispatch) => {
   setLoading();
 
   ajax(`http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy?search=${query}&page=${pageNr}`)
@@ -48,7 +61,7 @@ export const getTrips = (pageNr = 1, query = '') => async (dispatch) => {
     });
 };
 
-export const getSingleTrip = (id) => async (dispatch) => {
+export const getSinglePost = (id) => async (dispatch) => {
   setLoading();
 
   ajax(`http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`)
@@ -72,10 +85,10 @@ export const getSingleTrip = (id) => async (dispatch) => {
     });
 };
 
-export const getSidebarTrips = () => async (dispatch) => {
+export const getSidebarPosts = () => async (dispatch) => {
   setLoading();
 
-  ajax(`http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy`)
+  ajax('http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy')
     .pipe(
       map((response) => response),
       catchError((error) => of(error)),
@@ -94,33 +107,4 @@ export const getSidebarTrips = () => async (dispatch) => {
         });
       },
     });
-};
-
-export const setCurrentPage = (event) => {
-  return {
-    type: SET_CURRENT_PAGE,
-    payload: event,
-  };
-};
-
-export const searchTrip = (event) => {
-  return { type: SEARCH_TRIP, payload: event };
-};
-
-export const setLoading = () => {
-  return {
-    type: SET_LOADING,
-  };
-};
-
-export const clearCurrentTrip = () => {
-  return {
-    type: CLEAR_SINGLE_TRIP,
-  };
-};
-
-export const clearTrips = () => {
-  return {
-    type: CLEAR_TRIPS,
-  };
 };

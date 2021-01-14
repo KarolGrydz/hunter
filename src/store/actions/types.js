@@ -9,3 +9,4 @@ export const SET_PAGES = 'SET_PAGES';
 export const SET_TRIPS_NUMBER = 'SET_TRIPS_NUMBER';
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SET_SIDEBAR_TRIPS = 'SET_SIDEBAR_TRIPS';
+export const SET_VIEW = 'SET_VIEW';
