@@ -10,6 +10,7 @@ import {
   SET_TRIPS_NUMBER,
   SET_PAGES,
   SET_SIDEBAR_TRIPS,
+  SET_VIEW,
 } from '../actions/types';
 
 const initialState = {
@@ -22,6 +23,7 @@ const initialState = {
   search: '',
   isLoading: false,
   error: null,
+  view: 'agenda',
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -93,6 +95,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
+      };
+
+    case SET_VIEW:
+      return {
+        ...state,
+        view: action.payload,
       };
 
     default:
