@@ -50,7 +50,7 @@ const BlogContent = ({ posts }) => {
         posts.map(({ id, title, date }) => (
           <div className={classes.root} key={id}>
             <BlogTitle id={id} title={title} />
-            <BlogDate date={date} text="Data wyprawy:" />
+            <BlogDate date={date} text="Data wyprawy: " />
             <div className={classes.postImg} />
             <Container className={classes.description}>
               <BlogButtonMore id={id} text="Czytaj" />

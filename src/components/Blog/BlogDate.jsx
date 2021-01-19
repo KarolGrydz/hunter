@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +18,7 @@ const BlogDate = ({ date, text }) => {
     <div>
       <span className={classes.date}>
         {text}
-        {date.slice(0, 10)}
+        {moment(date.slice(0, 10)).calendar()}
       </span>
     </div>
   );

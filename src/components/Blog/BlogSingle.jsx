@@ -64,7 +64,7 @@ const BlogSingle = ({ match }) => {
           <Grid item xs={9}>
             <div className={classes.postContainer} key={post.id}>
               <BlogTitle id={post.id} title={post.title.rendered} />
-              <BlogDate date={post.date} text="Data wyprawy:" />
+              <BlogDate date={post.date} text="Data wyprawy: " />
               <div className={classes.postImg} />
               <div
                 className={classes.postDescription}

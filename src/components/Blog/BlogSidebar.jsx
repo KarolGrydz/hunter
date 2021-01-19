@@ -2,7 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { FilterHdr } from '@material-ui/icons';
-import { Grid, List, ListItem, Typography } from '@material-ui/core';
+import {
+  Grid, List, ListItem, Typography,
+} from '@material-ui/core';
 
 import BlogSearch from './BlogSearch';
 import BlogSidebarPosts from './BlogSidebarPosts';
