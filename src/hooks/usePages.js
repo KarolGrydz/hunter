@@ -8,21 +8,20 @@ const usePages = (url) => {
 
   useEffect(() => {
     let mounted = true;
-    if (mounted) {
-      ajax(url)
-        .pipe(
-          map((response) => response),
-          catchError((error) => of(error)),
-        )
-        .subscribe({
-          next: (res) => {
-            setState(res.response);
-          },
-          error: (err) => {
-            setState(err.response);
-          },
-        });
-    }
+
+    ajax(url)
+      .pipe(
+        map((response) => response),
+        catchError((error) => of(error)),
+      )
+      .subscribe({
+        next: (res) => {
+          if (mounted) setState(res.response);
+        },
+        error: (err) => {
+          if (mounted) setState(err.response);
+        },
+      });
 
     return () => {
       mounted = false;
