@@ -13,6 +13,20 @@ const theme = {
       contrastText: '#000',
     },
   },
+  typography: {
+    h1: {
+      fontSize: '6rem',
+      '@media (max-width:600px)': {
+        fontSize: '3rem',
+      },
+    },
+    h3: {
+      fontSize: '3rem',
+      '@media (max-width:600px)': {
+        fontSize: '1.5rem',
+      },
+    },
+  },
 };
 
 theme.overrides = {
