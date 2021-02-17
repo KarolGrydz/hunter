@@ -46,7 +46,7 @@ const BlogContentTable = ({ posts }) => {
   const classes = useStyles();
 
   return (
-    <Grid item xs={9} className={classes.root}>
+    <Grid item xs={12} md={9} className={classes.root}>
       {posts.length !== 0 ? (
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="customized table">
