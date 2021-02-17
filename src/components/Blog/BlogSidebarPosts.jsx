@@ -30,7 +30,7 @@ const BlogSidebarPosts = () => {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [posts]);
 
   if (!isLoading) return <Preloader />;
 
