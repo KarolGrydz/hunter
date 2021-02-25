@@ -11,7 +11,10 @@ import BlogTitle from './BlogTitle';
 import BlogDate from './BlogDate';
 
 import { getLoading, getSingleTrip } from '../../store/actions/selectors';
-import { getSinglePost, clearCurrentTrip } from '../../store/actions/blogActions';
+import {
+  getSinglePost,
+  clearCurrentTrip,
+} from '../../store/actions/blogActions';
 
 import ForestImage from '../../assets/img/forest.jpg';
 
