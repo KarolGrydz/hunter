@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 import Title from '../Title';
 import intro from '../../assets/video/intro.mp4';
-import logo from '../../assets/img/logo_big.bmp';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -26,9 +25,9 @@ const Movie = () => {
     <Box className={classes.root}>
       <video
         className={classes.movie}
-        autoPlay={true}
-        muted={true}
-        loop={true}
+        autoPlay="true"
+        muted="true"
+        loop="true"
         src={intro}
       />
       <Title title="Hunter" subTitle="grupa eksploracyjno-historyczna" />

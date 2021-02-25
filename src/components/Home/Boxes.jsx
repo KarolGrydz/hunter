@@ -8,7 +8,12 @@ import {
   faCameraRetro,
   faGlobeAfrica,
 } from '@fortawesome/free-solid-svg-icons';
-import { Typography, Card, CardContent, Grid } from '@material-ui/core';
+import {
+  Typography,
+  Card,
+  CardContent,
+  Grid,
+} from '@material-ui/core';
 import Fire from '../../assets/img/gora.jpg';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,8 +55,9 @@ const Boxes = () => {
           <CardContent className={classes.cardContent}>
             <VisibilitySensor>
               {({ isVisible }) => (
-                <Typography variant="h5" align="center" gutterBottom={true}>
-                  <CountUp end={146} start={isVisible ? 0 : 146} duration={4} />{' '}
+                <Typography variant="h5" align="center" gutterBottom="true">
+                  <CountUp end={146} start={isVisible ? 0 : 146} duration={4} />
+                  {' '}
                   wypraw udokumentowanych na naszej stronie
                 </Typography>
               )}
@@ -65,12 +71,13 @@ const Boxes = () => {
           <CardContent className={classes.cardContent}>
             <VisibilitySensor>
               {({ isVisible }) => (
-                <Typography variant="h5" align="center" gutterBottom={true}>
+                <Typography variant="h5" align="center" gutterBottom="true">
                   <CountUp
                     end={3277}
                     start={isVisible ? 0 : 3277}
                     duration={4}
-                  />{' '}
+                  />
+                  {' '}
                   zdjęć w galeriach
                 </Typography>
               )}
@@ -84,12 +91,13 @@ const Boxes = () => {
           <CardContent className={classes.cardContent}>
             <VisibilitySensor>
               {({ isVisible }) => (
-                <Typography variant="h5" align="center" gutterBottom={true}>
+                <Typography variant="h5" align="center" gutterBottom="true">
                   <CountUp
                     end={1000000}
                     start={isVisible ? 0 : 1000000}
                     duration={4}
-                  />{' '}
+                  />
+                  {' '}
                   pomysłów na następne wyprawy
                 </Typography>
               )}

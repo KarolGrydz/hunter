@@ -117,14 +117,14 @@ const Navbar = () => {
 
   return (
     <AppBar
-      position='sticky'
-      color='primary'
+      position="sticky"
+      color="primary"
       elevation={0}
       className={classes.root}
     >
       <Toolbar>
-        <Link to='/'>
-          <Avatar alt='Logo' src={HunterLogo} className={classes.logo} />
+        <Link to="/">
+          <Avatar alt="Logo" src={HunterLogo} className={classes.logo} />
         </Link>
         <nav className={classes.nav}>
           <div className={classes.menuNav}>
@@ -135,28 +135,28 @@ const Navbar = () => {
             ))}
           </div>
           <IconButton
-            edge='end'
+            edge="end"
             className={classes.menuButton}
-            color='inherit'
+            color="inherit"
             onClick={() => setOpen(!open)}
           >
             <MenuIcon />
           </IconButton>
           <Divider
-            orientation='vertical'
+            orientation="vertical"
             flexItem
             className={classes.divider}
           />
           <Link
-            to='https://www.youtube.com/user/grupahunter'
-            target='blank'
+            to="https://www.youtube.com/user/grupahunter"
+            target="blank"
             className={classes.ytIcon}
           >
             <YouTube />
           </Link>
           <Link
-            to='https://www.facebook.com/grupahunter'
-            target='blank'
+            to="https://www.facebook.com/grupahunter"
+            target="blank"
             className={classes.fbIcon}
           >
             <Facebook />
@@ -166,7 +166,7 @@ const Navbar = () => {
       <Collapse in={open}>
         <div className={classes.menuMobile}>
           <Divider
-            orientation='horizontal'
+            orientation="horizontal"
             flexItem
             className={classes.dividerMobile}
           />

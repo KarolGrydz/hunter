@@ -1,7 +1,12 @@
 import React from 'react';
 import * as R from 'ramda';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Grid, Typography, Fade } from '@material-ui/core';
+import {
+  Container,
+  Grid,
+  Typography,
+  Fade,
+} from '@material-ui/core';
 import { friends } from '../constants/apiUrls';
 import Preloader from './Blog/Preloader';
 import usePages from '../hooks/usePages';

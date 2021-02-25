@@ -5,7 +5,7 @@ import { Grid, Typography, Box } from '@material-ui/core';
 
 import { randomImg } from '../../utils/randomImg';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     background: 'black',
     display: 'flex',
