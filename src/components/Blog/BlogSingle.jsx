@@ -9,11 +9,13 @@ import Preloader from './Preloader';
 import BlogSidebar from './BlogSidebar';
 import BlogTitle from './BlogTitle';
 import BlogDate from './BlogDate';
+import BlogSingleGallery from './BlogSingleGallery';
 
 import { getLoading, getSingleTrip } from '../../store/actions/selectors';
 import {
   getSinglePost,
   clearCurrentTrip,
+  getSingleGallery,
 } from '../../store/actions/blogActions';
 
 import ForestImage from '../../assets/img/forest.jpg';
@@ -49,6 +51,7 @@ const BlogSingle = ({ match }) => {
   useEffect(() => {
     let mounted = true;
     if (mounted) dispatch(getSinglePost(match.params.id));
+    if (mounted) dispatch(getSingleGallery(match.params.id));
     return () => {
       mounted = false;
       dispatch(clearCurrentTrip());
@@ -76,6 +79,7 @@ const BlogSingle = ({ match }) => {
                 }}
               />
             </div>
+            <BlogSingleGallery gallery={post.gallery} />
           </Grid>
           <BlogSidebar />
         </Grid>

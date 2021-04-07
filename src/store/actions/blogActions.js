@@ -5,6 +5,7 @@ import { map, catchError } from 'rxjs/operators';
 import {
   GET_TRIPS,
   GET_SINGLE_TRIP,
+  GET_SINGLE_GALLERY,
   CLEAR_TRIPS,
   CLEAR_SINGLE_TRIP,
   TRIP_ERROR,
@@ -34,11 +35,11 @@ export const setView = (event) => ({ type: SET_VIEW, payload: event });
 
 export const getPosts = (pageNr = 1, query = '') => async (dispatch) => {
   ajax(
-    `http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy?search=${query}&page=${pageNr}`
+    `http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy?search=${query}&page=${pageNr}`,
   )
     .pipe(
       map((response) => response),
-      catchError((error) => of(error))
+      catchError((error) => of(error)),
     )
     .subscribe({
       next: (res) => {
@@ -68,7 +69,7 @@ export const getSinglePost = (id) => async (dispatch) => {
   ajax(`http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`)
     .pipe(
       map((response) => response),
-      catchError((error) => of(error))
+      catchError((error) => of(error)),
     )
     .subscribe({
       next: (res) => {
@@ -86,11 +87,35 @@ export const getSinglePost = (id) => async (dispatch) => {
     });
 };
 
+export const getSingleGallery = (id) => async (dispatch) => {
+  ajax(
+    `https://hunter.polkowice.pl/wp-json/wp/v2/media?per_page=100&parent=${id}`,
+  )
+    .pipe(
+      map((response) => response),
+      catchError((error) => of(error)),
+    )
+    .subscribe({
+      next: (res) => {
+        dispatch({
+          type: GET_SINGLE_GALLERY,
+          payload: res.response,
+        });
+      },
+      error: (err) => {
+        dispatch({
+          type: TRIP_ERROR,
+          payload: err.message,
+        });
+      },
+    });
+};
+
 export const getSidebarPosts = () => async (dispatch) => {
   ajax('http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy')
     .pipe(
       map((response) => response),
-      catchError((error) => of(error))
+      catchError((error) => of(error)),
     )
     .subscribe({
       next: (res) => {

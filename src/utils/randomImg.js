@@ -7,3 +7,5 @@ export const randomImg = () => {
   const drawImg = Math.floor(Math.random() * 3);
   return imgs[drawImg];
 };
+
+export default randomImg;

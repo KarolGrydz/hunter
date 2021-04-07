@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     zIndex: '1000',
     textShadow: '3px 3px white',
-    // backgroundImage: `linear-gradient(${theme.palette.primary.light}, ${theme.palette.primary.dark})`,
   },
 }));
 
