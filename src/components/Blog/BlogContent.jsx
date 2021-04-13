@@ -7,7 +7,7 @@ import BlogTitle from './BlogTitle';
 import BlogButtonMore from './BlogButtonMore';
 import BlogDate from './BlogDate';
 
-import randomImg from '../../utils/randomImg';
+import { randomImg } from '../../utils/randomImg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   postImg: {
+    // backgroundImage: `url(${randomImg()})`,
     backgroundColor: '#cecece',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
@@ -50,7 +51,10 @@ const BlogContent = ({ posts }) => {
           <div className={classes.root} key={id}>
             <BlogTitle id={id} title={title} />
             <BlogDate date={date} text="Data wyprawy: " />
-            <div className={classes.postImg} style={{ backgroundImage: `url(${randomImg()})` }} />
+            <div
+              className={classes.postImg}
+              style={{ backgroundImage: `url(${randomImg()})` }}
+            />
             <Container className={classes.description}>
               <BlogButtonMore id={id} text="Czytaj" />
             </Container>
