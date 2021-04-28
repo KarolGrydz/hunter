@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import propTypes from 'prop-types';
-import { isEmpty } from 'ramda';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid } from '@material-ui/core';
@@ -63,7 +62,7 @@ const BlogSingle = ({ match }) => {
 
   return (
     <Container className={classes.root}>
-      {isEmpty(post) ? (
+      {post.title === undefined ? (
         <Preloader />
       ) : (
         <Grid container>
@@ -75,7 +74,7 @@ const BlogSingle = ({ match }) => {
               <div
                 className={classes.postDescription}
                 dangerouslySetInnerHTML={{
-                  __html: post.content.rendered,
+                  __html: post.content,
                 }}
               />
             </div>

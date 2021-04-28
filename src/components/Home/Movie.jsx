@@ -1,16 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
-import Title from '../Title';
 import intro from '../../assets/video/intro.mp4';
 
 const useStyles = makeStyles(() => ({
   root: {
     height: '90vh',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     background: 'no-repeat center center fixed',
+    position: 'relative',
   },
 
   movie: {
@@ -30,7 +30,6 @@ const Movie = () => {
         loop="true"
         src={intro}
       />
-      <Title title="Hunter" subTitle="grupa eksploracyjno-historyczna" />
     </Box>
   );
 };
