@@ -11,6 +11,9 @@ export const getSingleTrip = createSelector(getBlog, ({ singleTrip }) => singleT
 export const getSidebarTrips = createSelector(getBlog, ({ sidebarTrips }) => sidebarTrips
   .map((trip) => returnTrip(trip)));
 
+export const getFrontTrips = createSelector(getBlog, ({ frontTrips }) => frontTrips
+  .map((trip) => returnTrip(trip)));
+
 export const getAllPagesNumber = createSelector(getBlog, ({ pages }) => Number(pages));
 
 export const getCurrentPage = createSelector(getBlog, ({ currentPage }) => Number(currentPage));
