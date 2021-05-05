@@ -12,8 +12,7 @@ import { observable$, filterLocation } from '../../utils/mapAPI';
 
 const useStyles = makeStyles((theme) => ({
   map: {
-    height: '400px',
-    marginBottom: theme.spacing(5),
+    height: '500px',
   },
   menuItem: {
     color: `${theme.palette.secondary.contrastText}!important`,

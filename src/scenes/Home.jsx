@@ -7,19 +7,13 @@ import Boxes from '../components/Home/Boxes';
 import Title from '../components/Title';
 import Info from '../components/Home/Info/Info';
 
-const arr = [0, 1, 2, 3];
-
 const Home = () => (
   <>
     <Movie />
     <Info />
     <Boxes />
     <Title title="Linki" subTitle="" />
-    <Grid container>
-      {arr.map((id) => (
-        <Column key={id} />
-      ))}
-    </Grid>
+    <Column />
     <Grid>
       <Title title="Mapa" subTitle="Wszystkie nasze wyprawy" />
       <Map />

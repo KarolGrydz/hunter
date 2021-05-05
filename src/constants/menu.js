@@ -5,7 +5,7 @@ const menu = [
     link: '/',
   },
   {
-    label: 'Kim jesteśmy?',
+    label: 'Kim jesteśmy',
     id: 'kim-jestesmy',
     link: '/kim-jestesmy',
   },
@@ -15,12 +15,12 @@ const menu = [
     link: '/wyprawy',
   },
   {
-    label: 'Polecamy',
+    label: 'Polecane',
     id: 'przyjaciele',
     link: '/przyjaciele',
   },
   {
-    label: 'Kontakt?',
+    label: 'Kontakt',
     id: 'kontakt',
     link: '/kontakt',
   },

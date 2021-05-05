@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 const InfoEvent = ({ data: { title, content } }) => {
   const classes = useStyles();
   return (
-    <Grid item xs={4}>
+    <Grid item xs={12} sm={12} md={4}>
       <Grid item xs={12}>
         <Typography className={classes.title} variant="h5">
           {title.rendered}
@@ -69,7 +69,7 @@ const InfoEvent = ({ data: { title, content } }) => {
 };
 
 InfoEvent.propTypes = {
-  data: propTypes.arrayOf(propTypes.object).isRequired,
+  data: propTypes.objectOf.isRequired,
 };
 
 export default InfoEvent;

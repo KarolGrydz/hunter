@@ -48,11 +48,11 @@ const BlogSingleGallery = ({ gallery }) => {
 
   return (
     <Container className={classes.root}>
-      {gallery === null || gallery === undefined ? (
+      {gallery === undefined || gallery === null ? (
         <Preloader />
       ) : (
         <Grid container>
-          <Grid item xs={9}>
+          <Grid item xs={12} sm={12} md={9}>
             <SRLWrapper options={options}>
               <div className={classes.gallery}>
                 {gallery.map((image) => (
@@ -75,7 +75,7 @@ const BlogSingleGallery = ({ gallery }) => {
 };
 
 BlogSingleGallery.propTypes = {
-  gallery: propTypes.arrayOf(propTypes.object).isRequired,
+  gallery: propTypes.arrayOf.isRequired,
 };
 
 export default BlogSingleGallery;

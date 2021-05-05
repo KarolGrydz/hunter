@@ -10,6 +10,7 @@ import {
   GET_SINGLE_GALLERY,
   GET_FRONT_POSTS,
   GET_FRONT_ATTACHMENT,
+  GET_ATTACHMENT,
   CLEAR_TRIPS,
   CLEAR_SINGLE_TRIP,
   CLEAR_FRONT_TRIPS,
@@ -21,6 +22,7 @@ import {
   SET_PAGES,
   SET_SIDEBAR_TRIPS,
   SET_VIEW,
+  SET_IMAGES_NUMBER,
 } from './types';
 
 export const setCurrentPage = (event) => ({
@@ -41,9 +43,7 @@ export const clearFrontTrips = () => ({ type: CLEAR_FRONT_TRIPS });
 export const setView = (event) => ({ type: SET_VIEW, payload: event });
 
 export const getPosts = (pageNr = 1, query = '') => async (dispatch) => {
-  ajax(
-    `${posts}?search=${query}&page=${pageNr}`,
-  )
+  ajax(`${posts}?search=${query}&page=${pageNr}`)
     .pipe(
       map((response) => response),
       catchError((error) => of(error)),
@@ -181,6 +181,25 @@ export const getFrontPosts = () => async (dispatch) => {
 };
 
 export const getFrontAttachment = (id) => async (dispatch) => {
+  ajax(`${media}`)
+    .pipe(
+      map((response) => response),
+      catchError((error) => of(error)),
+    )
+    .subscribe({
+      next: (res) => {
+        dispatch({
+          type: SET_IMAGES_NUMBER,
+          payload: res.xhr.getResponseHeader('x-wp-total'),
+        });
+      },
+      error: (err) => {
+        dispatch({
+          type: TRIP_ERROR,
+          payload: err.message,
+        });
+      },
+    });
   if (id !== 0) {
     ajax(`${media}/${id}`)
       .pipe(
@@ -190,9 +209,33 @@ export const getFrontAttachment = (id) => async (dispatch) => {
       .subscribe({
         next: (res) => {
           const data = { id: res.response.id, image: res.response.source_url };
-
           dispatch({
             type: GET_FRONT_ATTACHMENT,
+            payload: data,
+          });
+        },
+        error: (err) => {
+          dispatch({
+            type: TRIP_ERROR,
+            payload: err.message,
+          });
+        },
+      });
+  }
+};
+
+export const getAttachment = (id) => async (dispatch) => {
+  if (id !== 0) {
+    ajax(`${media}/${id}`)
+      .pipe(
+        map((response) => response),
+        catchError((error) => of(error)),
+      )
+      .subscribe({
+        next: (res) => {
+          const data = { id: res.response.id, image: res.response.source_url };
+          dispatch({
+            type: GET_ATTACHMENT,
             payload: data,
           });
         },

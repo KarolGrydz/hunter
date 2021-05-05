@@ -6,7 +6,10 @@ const getBlog = ({ blog }) => blog;
 export const getTrips = createSelector(getBlog, ({ trips }) => trips
   .map((trip) => returnTrip(trip)));
 
-export const getSingleTrip = createSelector(getBlog, ({ singleTrip }) => singleTrip);
+export const getSingleTrip = createSelector(
+  getBlog,
+  ({ singleTrip }) => singleTrip,
+);
 
 export const getSidebarTrips = createSelector(getBlog, ({ sidebarTrips }) => sidebarTrips
   .map((trip) => returnTrip(trip)));
@@ -20,7 +23,9 @@ export const getCurrentPage = createSelector(getBlog, ({ currentPage }) => Numbe
 
 export const getAllPostNumber = createSelector(getBlog, ({ tripsNumber }) => Number(tripsNumber));
 
-export const getSearch = createSelector(getBlog, ({ search }) => (search));
+export const getImagesNumber = createSelector(getBlog, ({ imagesNumber }) => Number(imagesNumber));
+
+export const getSearch = createSelector(getBlog, ({ search }) => search);
 
 export const getLoading = createSelector(getBlog, ({ isLoading }) => isLoading);
 
