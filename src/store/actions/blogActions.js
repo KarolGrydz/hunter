@@ -23,6 +23,9 @@ import {
   SET_SIDEBAR_TRIPS,
   SET_VIEW,
   SET_IMAGES_NUMBER,
+  SET_DATE,
+  SET_DATE_SINGLE,
+  SET_SIDEBAR_SINGLE,
 } from './types';
 
 export const setCurrentPage = (event) => ({
@@ -42,35 +45,37 @@ export const clearFrontTrips = () => ({ type: CLEAR_FRONT_TRIPS });
 
 export const setView = (event) => ({ type: SET_VIEW, payload: event });
 
-export const getPosts = (pageNr = 1, query = '') => async (dispatch) => {
-  ajax(`${posts}?search=${query}&page=${pageNr}`)
-    .pipe(
-      map((response) => response),
-      catchError((error) => of(error)),
-    )
-    .subscribe({
-      next: (res) => {
-        dispatch({
-          type: GET_TRIPS,
-          payload: res.response,
-        });
-        dispatch({
-          type: SET_TRIPS_NUMBER,
-          payload: res.xhr.getResponseHeader('x-wp-total'),
-        });
-        dispatch({
-          type: SET_PAGES,
-          payload: res.xhr.getResponseHeader('x-wp-totalpages'),
-        });
-      },
-      error: (err) => {
-        dispatch({
-          type: TRIP_ERROR,
-          payload: err.message,
-        });
-      },
-    });
-};
+export const getPosts =
+  (pageNr = 1, query = '') =>
+  async (dispatch) => {
+    ajax(`${posts}?search=${query}&page=${pageNr}`)
+      .pipe(
+        map((response) => response),
+        catchError((error) => of(error)),
+      )
+      .subscribe({
+        next: (res) => {
+          dispatch({
+            type: GET_TRIPS,
+            payload: res.response,
+          });
+          dispatch({
+            type: SET_TRIPS_NUMBER,
+            payload: res.xhr.getResponseHeader('x-wp-total'),
+          });
+          dispatch({
+            type: SET_PAGES,
+            payload: res.xhr.getResponseHeader('x-wp-totalpages'),
+          });
+        },
+        error: (err) => {
+          dispatch({
+            type: TRIP_ERROR,
+            payload: err.message,
+          });
+        },
+      });
+  };
 
 export const getSinglePost = (id) => async (dispatch) => {
   ajax(`${posts}/${id}`)
@@ -96,9 +101,7 @@ export const getSinglePost = (id) => async (dispatch) => {
 };
 
 export const getSingleGallery = (id) => async (dispatch) => {
-  ajax(
-    `${media}?orderby=title&order=asc&per_page=100&parent=${id}`,
-  )
+  ajax(`${media}?orderby=title&order=asc&per_page=100&parent=${id}`)
     .pipe(
       map((response) => response),
       catchError((error) => of(error)),
@@ -248,3 +251,9 @@ export const getAttachment = (id) => async (dispatch) => {
       });
   }
 };
+
+export const setDate = (event) => ({ type: SET_DATE, payload: event });
+
+export const setSingleDate = (event) => ({ type: SET_DATE_SINGLE, payload: event });
+
+export const setSidebarDate = (event) => ({ type: SET_SIDEBAR_SINGLE, payload: event });

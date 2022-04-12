@@ -7,8 +7,8 @@ import Preloader from './Preloader';
 import BlogDate from './BlogDate';
 import BlogTitle from './BlogTitle';
 
-import { getSidebarPosts } from '../../store/actions/blogActions';
-import { getSidebarTrips, getLoading } from '../../store/actions/selectors';
+import { getSidebarPosts, setSidebarDate } from '../../store/actions/blogActions';
+import { getSidebarTrips, getLoading, getTripDate } from '../../store/actions/selectors';
 
 const useStyles = makeStyles((theme) => ({
   post: {
@@ -23,6 +23,7 @@ const BlogSidebarPosts = () => {
   const dispatch = useDispatch();
   const posts = useSelector(getSidebarTrips);
   const isLoading = useSelector(getLoading);
+  const tripDate = useSelector(getTripDate);
 
   useEffect(() => {
     let mounted = true;
@@ -32,6 +33,15 @@ const BlogSidebarPosts = () => {
     };
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    let mounted = true;
+    if (mounted && tripDate.length !== 0 && posts.length !== 0) dispatch(setSidebarDate(tripDate));
+    return () => {
+      mounted = false;
+    };
+    // eslint-disable-next-line
+  }, [posts.length, tripDate.length]);
 
   if (!isLoading) return <Preloader />;
 

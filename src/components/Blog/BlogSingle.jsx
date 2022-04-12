@@ -10,11 +10,12 @@ import BlogTitle from './BlogTitle';
 import BlogDate from './BlogDate';
 import BlogSingleGallery from './BlogSingleGallery';
 
-import { getLoading, getSingleTrip } from '../../store/actions/selectors';
+import { getLoading, getSingleTrip, getTripDate } from '../../store/actions/selectors';
 import {
   getSinglePost,
   clearCurrentTrip,
   getSingleGallery,
+  setSingleDate,
 } from '../../store/actions/blogActions';
 
 import ForestImage from '../../assets/img/forest.jpg';
@@ -45,18 +46,29 @@ const BlogSingle = ({ match }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const post = useSelector(getSingleTrip);
+  const tripDate = useSelector(getTripDate);
   const isLoading = useSelector(getLoading);
 
   useEffect(() => {
     let mounted = true;
     if (mounted) dispatch(getSinglePost(match.params.id));
     if (mounted) dispatch(getSingleGallery(match.params.id));
+    if (mounted) dispatch(setSingleDate(tripDate));
     return () => {
       mounted = false;
       dispatch(clearCurrentTrip());
     };
     // eslint-disable-next-line
   }, [match.params.id]);
+
+  useEffect(() => {
+    let mounted = true;
+    if (mounted && post?.id) dispatch(setSingleDate(tripDate));
+    return () => {
+      mounted = false;
+    };
+    // eslint-disable-next-line
+  }, [post.id]);
 
   if (!isLoading) return <Preloader />;
 

@@ -49,7 +49,7 @@ const Map = () => {
         <React.Fragment key={id}>
           <Marker position={location.split(',')} icon={myIcon} key={id}>
             <Popup>
-              <Link key={id} target="blank" className={classes.menuItem} to={`/wyprawy/${id}`}>{title}</Link>
+              <Link key={id} className={classes.menuItem} to={`/wyprawy/${id}`}>{title}</Link>
             </Popup>
           </Marker>
         </React.Fragment>

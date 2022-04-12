@@ -46,11 +46,14 @@ const Column = () => {
   const classes = useStyles();
 
   return (
-    <Grid container>
+    <Grid container justify="center" alignItems="center" style={{ background: 'black' }}>
       {columns.map(({
-        label, id, link, img,
+        label,
+        id,
+        link,
+        img,
       }) => (
-        <Grid item xs={12} sm={12} md={3} className={classes.root} key={id}>
+        <Grid item xs={12} sm={12} md={2} className={classes.root} key={id}>
           <Typography variant="h5" align="center" className={classes.text}>
             {label}
           </Typography>

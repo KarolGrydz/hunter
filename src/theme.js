@@ -1,5 +1,8 @@
 const theme = {
   palette: {
+    background: {
+      default: '#dbd5d1',
+    },
     primary: {
       light: '#b28e67',
       main: '#81613c',

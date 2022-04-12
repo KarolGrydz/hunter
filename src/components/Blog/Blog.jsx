@@ -16,12 +16,9 @@ import {
   getSearch,
   getLoading,
   getTrips,
+  getTripDate,
 } from '../../store/actions/selectors';
-import {
-  getPosts,
-  clearTrips,
-  getAttachment,
-} from '../../store/actions/blogActions';
+import { getPosts, clearTrips, getAttachment, setDate } from '../../store/actions/blogActions';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -37,6 +34,7 @@ const Blog = () => {
   const search = useSelector(getSearch);
   const isLoading = useSelector(getLoading);
   const trips = useSelector(getTrips);
+  const tripDate = useSelector(getTripDate);
 
   useEffect(() => {
     let mounted = true;
@@ -59,17 +57,24 @@ const Blog = () => {
     // eslint-disable-next-line
   }, [trips.length]);
 
+  useEffect(() => {
+    let mounted = true;
+    if (mounted && tripDate.length !== 0 && trips.length !== 0) {
+      dispatch(setDate(tripDate));
+    }
+    return () => {
+      mounted = false;
+    };
+    // eslint-disable-next-line
+  }, [tripDate.length, trips.length]);
+
   if (!isLoading) return <Preloader />;
 
   return (
     <Container className={classes.root}>
       <BlogChangeView />
       <Grid container>
-        {view === 'agenda' ? (
-          <BlogContent posts={trips} />
-        ) : (
-          <BlogContentTable posts={trips} />
-        )}
+        {view === 'agenda' ? <BlogContent posts={trips} /> : <BlogContentTable posts={trips} />}
         <BlogSidebar />
         <BlogPagination />
       </Grid>

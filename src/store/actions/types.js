@@ -1,3 +1,4 @@
+// blog
 export const GET_TRIPS = 'GET_TRIPS';
 export const GET_SINGLE_TRIP = 'GET_SINGLE_TRIP';
 export const GET_SINGLE_GALLERY = 'GET_SINGLE_GALLERY';
@@ -16,3 +17,8 @@ export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SET_SIDEBAR_TRIPS = 'SET_SIDEBAR_TRIPS';
 export const SET_VIEW = 'SET_VIEW';
 export const SET_IMAGES_NUMBER = 'SET_IMAGES_NUMBER';
+export const SET_DATE = 'SET_DATE';
+export const SET_DATE_SINGLE = 'SET_DATE_SINGLE';
+export const SET_SIDEBAR_SINGLE = 'SET_SIDEBAR_SINGLE';
+// map
+export const GET_MAP_TRIPS = 'GET_MAP_TRIPS';

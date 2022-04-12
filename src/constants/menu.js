@@ -5,14 +5,14 @@ const menu = [
     link: '/',
   },
   {
-    label: 'Kim jesteśmy',
-    id: 'kim-jestesmy',
-    link: '/kim-jestesmy',
-  },
-  {
     label: 'Wyprawy',
     id: 'wyprawy',
     link: '/wyprawy',
+  },
+  {
+    label: 'Kim jesteśmy',
+    id: 'kim-jestesmy',
+    link: '/kim-jestesmy',
   },
   {
     label: 'Polecane',
@@ -23,6 +23,11 @@ const menu = [
     label: 'Kontakt',
     id: 'kontakt',
     link: '/kontakt',
+  },
+  {
+    label: 'Dla mediów',
+    id: 'forMedia',
+    link: '/dla-mediow',
   },
 ];
 

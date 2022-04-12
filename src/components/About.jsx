@@ -36,7 +36,7 @@ const About = () => {
   return (
     <Container className={classes.root} maxWidth="md">
       <Fade in timeout={2500}>
-        <Grid container justify="center">
+        <Grid container justify="center" direction="column">
           <Typography variant="h3" className={classes.title}>
             {data.title.rendered}
           </Typography>

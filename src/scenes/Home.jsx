@@ -6,9 +6,15 @@ import Column from '../components/Home/Column';
 import Boxes from '../components/Home/Boxes';
 import Title from '../components/Title';
 import Info from '../components/Home/Info/Info';
+import FacebookIcon from '../components/Home/FacebookIcon';
+import YouTubeIcon from '../components/Home/YouTubeIcon';
+import InstagramIcon from '../components/Home/InstagramIcon';
 
 const Home = () => (
   <>
+    <FacebookIcon />
+    <YouTubeIcon />
+    <InstagramIcon />
     <Movie />
     <Info />
     <Boxes />

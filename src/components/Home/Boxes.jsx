@@ -20,7 +20,7 @@ import {
   getImagesNumber,
 } from '../../store/actions/selectors';
 
-import Fire from '../../assets/img/gora.jpg';
+import Fire from '../../assets/img/farCastle.JPG';
 
 const useStyles = makeStyles((theme) => ({
   root: {

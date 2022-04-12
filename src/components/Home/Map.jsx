@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-} from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import myIcon from '../../constants/icon';
 import { observable$, filterLocation } from '../../utils/mapAPI';
+import { GET_MAP_TRIPS } from '../../store/actions/types';
 
 const useStyles = makeStyles((theme) => ({
   map: {
@@ -27,9 +24,15 @@ const useStyles = makeStyles((theme) => ({
 const Map = () => {
   const [elements, setElements] = useState([]);
   const classes = useStyles();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     observable$.subscribe((res) => {
       setElements(filterLocation(res));
+      dispatch({
+        type: GET_MAP_TRIPS,
+        payload: filterLocation(res),
+      });
     });
   }, []);
 
@@ -45,21 +48,16 @@ const Map = () => {
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {elements.length
         ? elements.map(({ location, id, title }) => (
-          <React.Fragment key={id}>
-            <Marker position={location.split(',')} icon={myIcon} key={id}>
-              <Popup>
-                <Link
-                  key={id}
-                  target="blank"
-                  className={classes.menuItem}
-                  to={`/wyprawy/${id}`}
-                >
-                  {title}
-                </Link>
-              </Popup>
-            </Marker>
-          </React.Fragment>
-        ))
+            <React.Fragment key={id}>
+              <Marker position={location.split(',')} icon={myIcon} key={id}>
+                <Popup>
+                  <Link key={id} className={classes.menuItem} to={`/wyprawy/${id}`}>
+                    {title}
+                  </Link>
+                </Popup>
+              </Marker>
+            </React.Fragment>
+          ))
         : null}
     </MapContainer>
   );

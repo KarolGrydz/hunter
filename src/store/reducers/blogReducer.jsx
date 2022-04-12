@@ -17,6 +17,9 @@ import {
   SET_IMAGES_NUMBER,
   GET_FRONT_ATTACHMENT,
   GET_ATTACHMENT,
+  SET_DATE,
+  SET_DATE_SINGLE,
+  SET_SIDEBAR_SINGLE,
 } from '../actions/types';
 
 const initialState = {
@@ -34,7 +37,6 @@ const initialState = {
   view: 'agenda',
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_TRIPS:
@@ -68,19 +70,21 @@ export default (state = initialState, action) => {
     case GET_FRONT_ATTACHMENT:
       return {
         ...state,
-        frontTrips: state.frontTrips.map((trip) => (trip.featured_media === action.payload.id
-          ? { ...trip, image: action.payload.image }
-          : { ...trip }
-        )),
+        frontTrips: state.frontTrips.map((trip) =>
+          trip.featured_media === action.payload.id
+            ? { ...trip, image: action.payload.image }
+            : { ...trip },
+        ),
       };
 
     case GET_ATTACHMENT:
       return {
         ...state,
-        trips: state.trips.map((trip) => (trip.featured_media === action.payload.id
-          ? { ...trip, image: action.payload.image }
-          : { ...trip }
-        )),
+        trips: state.trips.map((trip) =>
+          trip.featured_media === action.payload.id
+            ? { ...trip, image: action.payload.image }
+            : { ...trip },
+        ),
       };
 
     case SEARCH_TRIP:
@@ -156,6 +160,31 @@ export default (state = initialState, action) => {
       return {
         ...state,
         imagesNumber: action.payload,
+      };
+
+    case SET_DATE:
+      return {
+        ...state,
+        trips: state.trips.map((elem) => {
+          const newTrip = action.payload.find((trip) => trip.id === elem.id);
+          return { ...elem, date: newTrip?.date };
+        }),
+      };
+
+    case SET_DATE_SINGLE:
+      const newTrip = action.payload.find((trip) => trip.id === state.singleTrip.id);
+      return {
+        ...state,
+        singleTrip: { ...state.singleTrip, date: newTrip?.date },
+      };
+
+    case SET_SIDEBAR_SINGLE:
+      return {
+        ...state,
+        sidebarTrips: state.sidebarTrips.map((elem) => {
+          const newTrip = action.payload.find((trip) => trip.id === elem.id);
+          return { ...elem, date: newTrip?.date };
+        }),
       };
 
     default:

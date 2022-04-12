@@ -7,12 +7,12 @@ import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { Facebook, YouTube } from '@material-ui/icons';
+import { Facebook, YouTube, Instagram } from '@material-ui/icons';
 import { blue, red } from '@material-ui/core/colors';
 import Collapse from '@material-ui/core/Collapse';
 
 import menu from '../constants/menu';
-import HunterLogo from '../assets/img/czacha2.jpg';
+import HunterLogo from '../assets/img/team(2).jpg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,8 +29,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   logo: {
-    width: 60,
-    height: 60,
+    width: 140,
+    height: 100,
+    borderRadius: 5,
+    [theme.breakpoints.down('sm')]: {
+      width: 70,
+      height: 50,
+    },
   },
   menuItem: {
     display: 'flex',
@@ -70,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
   fbIcon: {
     display: 'flex',
+    marginRight: theme.spacing(2),
     color: blue[300],
     '&:hover': {
       color: blue[400],
@@ -82,6 +88,13 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       color: red[400],
     },
+  },
+  InstaIcon: {
+    display: 'flex',
+    background:
+      'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
+    color: '#fff',
+    borderRadius: '5px',
   },
   menuButton: {
     display: 'none',
@@ -116,12 +129,7 @@ const Navbar = () => {
   const classes = useStyles();
 
   return (
-    <AppBar
-      position="sticky"
-      color="primary"
-      elevation={0}
-      className={classes.root}
-    >
+    <AppBar position="sticky" color="primary" elevation={0} className={classes.root}>
       <Toolbar>
         <Link to="/">
           <Avatar alt="Logo" src={HunterLogo} className={classes.logo} />
@@ -142,34 +150,29 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Divider
-            orientation="vertical"
-            flexItem
-            className={classes.divider}
-          />
-          <Link
-            to="https://www.youtube.com/user/grupahunter"
+          <Divider orientation="vertical" flexItem className={classes.divider} />
+          <a
+            href="https://www.youtube.com/user/grupahunter"
             target="blank"
             className={classes.ytIcon}
           >
             <YouTube />
-          </Link>
-          <Link
-            to="https://www.facebook.com/grupahunter"
-            target="blank"
-            className={classes.fbIcon}
-          >
+          </a>
+          <a href="https://www.facebook.com/grupahunter" target="blank" className={classes.fbIcon}>
             <Facebook />
-          </Link>
+          </a>
+          <a
+            href="https://www.instagram.com/hunterpolkowice"
+            target="blank"
+            className={classes.InstaIcon}
+          >
+            <Instagram />
+          </a>
         </nav>
       </Toolbar>
       <Collapse in={open}>
         <div className={classes.menuMobile}>
-          <Divider
-            orientation="horizontal"
-            flexItem
-            className={classes.dividerMobile}
-          />
+          <Divider orientation="horizontal" flexItem className={classes.dividerMobile} />
           {menu.map(({ id, link, label }) => (
             <Link
               key={id}

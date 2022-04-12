@@ -13,7 +13,7 @@ import randomImg from '../../utils/randomImg';
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(0, 3),
-    height: '130vh',
+    height: '70vh',
     display: 'flex',
     flexDirection: 'column',
     [theme.breakpoints.down('sm')]: {
@@ -37,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    width: '100%',
-    height: '100%',
+    width: '70%',
+    height: '70%',
   },
 }));
 
